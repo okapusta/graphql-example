@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  backend:
+    image: graphql-example.backend
+    build:
+      context: ./
+      dockerfile: Dockerfile.backend
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_DATABASE: mysql2://root:insecurepassword@database/graphql_development
+    links:
+      - database
+    depends_on:
+      - database
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: insecurepassword
+      MYSQL_DATABASE: graphql_development
+  web:
+    image: nginx
+    ports:
+      - "8888:80"
+    links:
+      - backend
+    depends_on:
+      - backend
+    volumes:
+      - ./config/nginx/application.conf:/etc/nginx/conf.d/default.conf
