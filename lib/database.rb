@@ -1,7 +1,9 @@
 class Database
   class << self
-    def establish_connection
-      Sequel.connect(ENV['MYSQL_DATABASE'])
+    def establish_connection(db = nil)
+      Sequel.connect(db || ENV['MYSQL_DATABASE'])
+    rescue
+      puts "Database connection couldn't be established..."
     end
   end
 end

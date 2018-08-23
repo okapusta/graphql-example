@@ -1,6 +1,4 @@
 Sequel.migration do
-  no_transaction
-
   change do
     create_table(:festivals) do
       primary_key :id

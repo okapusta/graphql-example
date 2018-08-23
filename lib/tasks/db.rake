@@ -1,11 +1,11 @@
 require 'sequel'
 require './lib/database'
 
-DB = Database.establish_connection
-
 Sequel.extension :migration, :core_extensions
 
 namespace :db do
+  DB = Database.establish_connection
+
   desc "Migrate database"
   task :migrate do
     Sequel::Migrator.run(DB, './db/migrate')

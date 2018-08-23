@@ -1,6 +1,6 @@
 module Graph
   module Types
-    class BaseType < GraphQL::Schema::Object
+    class QueryType < BaseType
     end
   end
 end

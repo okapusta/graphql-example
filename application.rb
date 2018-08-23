@@ -11,6 +11,10 @@ require './app/models/festival'
 
 class GraphQLExample < Sinatra::Base
   post "/graph" do
-    "hello love!"
+    result = Graph::GraphQLExampleSchema.execute(params[:query])
+
+    content_type :json
+
+    halt(200, {}, json_enc(result))
   end
 end
