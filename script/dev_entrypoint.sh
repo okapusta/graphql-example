@@ -1,8 +1,9 @@
 #!/bin/bash
 
 function __wait_for_db {
-  sleep 15
   printf "Waiting for database to start\n"
+
+  sleep 10
   while ! ping -c 1 -n -w 1 database &> /dev/null
   do
       sleep 1
