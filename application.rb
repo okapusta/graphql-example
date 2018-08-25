@@ -12,6 +12,7 @@ require './app/models/user'
 require './app/models/festival'
 
 require './graph/types/base_type'
+require './graph/types/festival_type'
 require './graph/types/user_type'
 require './graph/resolvers/base_resolver'
 require './graph/resolvers/user_resolver'
