@@ -13,6 +13,8 @@ services:
       - database
     depends_on:
       - database
+    ports:
+      - "9292:9292"
   database:
     image: mysql:5.7
     environment:
@@ -29,5 +31,8 @@ services:
     volumes:
       - ./config/nginx/application.conf:/etc/nginx/conf.d/default.conf
   graphiql:
+    image: npalm/graphiql
     environment:
-      API_URL: http://localhost/graph
+      API_URL: http://localhost:9292/graph
+    ports:
+      - "4000:4000"

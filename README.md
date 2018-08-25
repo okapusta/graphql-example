@@ -10,7 +10,7 @@ Running
 
 Testing
 ----
-```rake```
+```docker-compose exec backend rake``` or ```make test```
 
 GraphiQL
 ----

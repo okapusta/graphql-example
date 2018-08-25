@@ -17,6 +17,10 @@ function __bootstrap_database {
   bundle exec rake db:migrate
 }
 
+function __bundle_gems {
+  bundle install
+}
+
 function __seed_database {
   printf "Seeding database...'n'"
 
@@ -25,6 +29,8 @@ function __seed_database {
 
 __wait_for_db
 __bootstrap_database
+
+__bundle_gems
 __seed_database
 
-bundle exec rerun 'rackup -o 0.0.0.0'
+bundle exec rerun -b 'rackup -o 0.0.0.0'
