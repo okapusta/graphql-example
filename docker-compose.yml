@@ -13,8 +13,13 @@ services:
       - database
     depends_on:
       - database
-    ports:
-      - "9292:9292"
+  frontend:
+    image: graphql-example.frontend
+    build:
+      context: ./
+      dockerfile: Dockerfile.frontend
+    volumes:
+      - ./:/app
   database:
     image: mysql:5.7
     environment:
@@ -33,6 +38,6 @@ services:
   graphiql:
     image: npalm/graphiql
     environment:
-      API_URL: http://localhost:9292/graph
+      API_URL: http://localhost:8888/api/graph
     ports:
       - "4000:4000"

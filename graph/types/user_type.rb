@@ -1,6 +1,7 @@
 module Graph
   module Types
     class UserType < BaseType
+      field :id, Integer
       field :email, String
       field :handle, String
 

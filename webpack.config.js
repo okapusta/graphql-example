@@ -23,5 +23,8 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    disableHostCheck: true
+  },
   entry: './frontend/index.js'
 };

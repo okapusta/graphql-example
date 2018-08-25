@@ -22,15 +22,14 @@ function __bundle_gems {
 }
 
 function __seed_database {
-  printf "Seeding database...'n'"
+  printf "Seeding database...\n"
 
   bundle exec rake db:seed
 }
 
 __wait_for_db
-__bootstrap_database
-
 __bundle_gems
+__bootstrap_database
 __seed_database
 
 bundle exec rerun -b 'rackup -o 0.0.0.0'
