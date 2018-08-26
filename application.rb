@@ -24,7 +24,7 @@ class GraphQLExample < Sinatra::Base
   use Rack::PostBodyContentTypeParser
   use Rack::Cors do
     allow do
-      origins 'localhost:4000'
+      origins %w(localhost:4000 localhost:8080 localhost:8888)
       resource '*', :headers => :any,
         :methods => [:post, :options], credentials: true
     end
