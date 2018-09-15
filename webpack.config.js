@@ -24,8 +24,12 @@ module.exports = {
     ]
   },
   devServer: {
-    disableHostCheck: true
+    disableHostCheck: true,
+    historyApiFallback: true
   },
   mode: 'development',
-  entry: './frontend/index.js'
+  entry: './frontend/index.js',
+  output: {
+    publicPath: '/'
+  }
 };

@@ -15,6 +15,7 @@ require './graph/types/base_type'
 require './graph/types/festival_type'
 require './graph/types/user_type'
 require './graph/resolvers/base_resolver'
+require './graph/resolvers/users_resolver'
 require './graph/resolvers/user_resolver'
 
 require './graph/types/query_type'
@@ -31,7 +32,9 @@ class GraphQLExample < Sinatra::Base
   end
 
   post "/graph" do
-    result = Graph::GraphQLExampleSchema.execute(params[:query])
+    result = Graph::GraphQLExampleSchema.execute(params[:query], {
+      variables: params[:variables]
+    })
 
     content_type :json
 
