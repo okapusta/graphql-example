@@ -27,6 +27,12 @@ export class FestivalForm extends React.Component {
     this.setState(newState);
   }
 
+  clearInputs () {
+    this.setState({
+      name: '', place: '', userId: this.props.userId,
+    })
+  }
+
   render() {
     const name = this.state.name;
     const place = this.state.place;

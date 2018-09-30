@@ -37,7 +37,7 @@ const ADD_FESTIVAL = gql`
 export class User extends React.Component {
   constructor(props) {
     super(props);
-
+    this.formRef = React.createRef();
     this.userId = Number(props.match.params.id);
   }
   render() {
@@ -53,12 +53,13 @@ export class User extends React.Component {
               <h1>{ user.handle }</h1>
               <h3>Add festival</h3>
               <Mutation mutation={ ADD_FESTIVAL } refetchQueries={() => {
+                this.formRef.current.clearInputs();
                 return [
                   { query: GET_USER, variables: { id: this.userId }}
                 ];
               }}>
                 {(addFestival, { data }) => (
-                  <FestivalForm onSubmit={ addFestival.bind(this) } userId={ this.userId }/>
+                  <FestivalForm onSubmit={ addFestival.bind(this) } userId={ this.userId } ref={ this.formRef }/>
                 )}
               </Mutation>
               <hr />
