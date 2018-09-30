@@ -34,8 +34,8 @@ export class Users extends React.Component {
               return (
                 <ol>
                   {
-                    users.map((user, index) => (
-                      <li key='user_{ index }'>
+                    users.map((user) => (
+                      <li key={ user.index }>
                         <Link to={ `/users/${user.id}` }>{ user.handle }</Link>
                       </li>
                     ))

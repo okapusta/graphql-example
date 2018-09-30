@@ -1,9 +1,10 @@
 import React from "react";
 import gql from "graphql-tag";
 
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { Error } from './error';
 import { Loading } from './loading';
+import { FestivalForm } from './festival/form'
 
 const GET_USER = gql`
   query User($id: Int!) {
@@ -13,6 +14,19 @@ const GET_USER = gql`
       email
 
       festivals {
+        id
+        name
+        place
+      }
+    }
+  }
+`;
+
+const ADD_FESTIVAL = gql`
+  mutation AddFestival($name: String!, $place: String!, $userId: Int) {
+    addFestival(name: $name, place: $place, userId: $userId) {
+      festival {
+        id
         name
         place
       }
@@ -37,10 +51,16 @@ export class User extends React.Component {
           return (
             <div>
               <h1>{ user.handle }</h1>
+              <h3>Add festival</h3>
+              <Mutation mutation={ ADD_FESTIVAL }>
+                {(addFestival, { data }) => (
+                  <FestivalForm onSubmit={ addFestival.bind(this) } userId={ this.userId }/>
+                )}
+              </Mutation>
               <hr />
               { user.festivals.map((fest) => {
                 return (
-                  <div>{ fest.name }</div>
+                  <div key={ fest.id }>{ fest.name } - { fest.place }</div>
                 );
               })}
             </div>

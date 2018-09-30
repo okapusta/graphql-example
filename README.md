@@ -8,7 +8,7 @@ Running
 
 ```make``` (port 8888)
 
-Testing
+Testing (TBD)
 ----
 ```docker-compose exec backend rake``` or ```make test```
 
