@@ -6,6 +6,7 @@ module Graph
       argument :user_id, Integer, required: false
 
       field :festival, Types::FestivalType, null: true
+      field :errors, [String], null: false
 
       def resolve(name:, place:, user_id: nil)
         festival = Festival.new(name: name, place: place)
@@ -14,10 +15,14 @@ module Graph
             add_festival(user, festival)
           end
           {
-            festival: festival
+            festival: festival,
+            errors: errors
           }
         else
-          puts festival.errors
+          {
+            festival: nil,
+            errors: festival.errors.full_messages
+          }
         end
       end
 

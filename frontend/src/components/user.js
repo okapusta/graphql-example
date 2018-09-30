@@ -30,6 +30,7 @@ const ADD_FESTIVAL = gql`
         name
         place
       }
+      errors
     }
   }
 `;
