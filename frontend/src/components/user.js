@@ -52,7 +52,7 @@ export class User extends React.Component {
             <div>
               <h1>{ user.handle }</h1>
               <h3>Add festival</h3>
-              <Mutation mutation={ ADD_FESTIVAL } refetchQueries={() => {
+              <Mutation mutation={ ADD_FESTIVAL } refetchQueries={() => { // FIXME: update from server response
                 this.formRef.current.clearInputs();
                 return [
                   { query: GET_USER, variables: { id: this.userId }}

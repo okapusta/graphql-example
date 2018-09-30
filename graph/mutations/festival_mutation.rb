@@ -8,14 +8,17 @@ module Graph
       field :festival, Types::FestivalType, null: true
 
       def resolve(name:, place:, user_id: nil)
-        festival = Festival.create(name: name, place: place)
-        if user_id
-          user = User.find(user_id).last # ???
-          add_festival(user, festival)
+        festival = Festival.new(name: name, place: place)
+        if festival.save
+          if user = User.find(user_id).last
+            add_festival(user, festival)
+          end
+          {
+            festival: festival
+          }
+        else
+          puts festival.errors
         end
-        {
-          festival: festival
-        }
       end
 
       private
