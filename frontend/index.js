@@ -15,7 +15,7 @@ class GraphQLExample extends React.Component {
     super();
 
     this.client = new ApolloClient({
-      uri: "http://localhost:8888/api/graph"
+      uri: "http://localhost/api/graph"
     });
   }
 

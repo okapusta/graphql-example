@@ -16,7 +16,7 @@ module Graph
           end
           {
             festival: festival,
-            errors: errors
+            errors: []
           }
         else
           {

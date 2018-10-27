@@ -4,7 +4,7 @@ services:
     image: graphql-example.backend
     build:
       context: ./
-      dockerfile: Dockerfile.backend
+      dockerfile: ./dockerfiles/backend/Dockerfile
     volumes:
       - ./:/app
     environment:
@@ -17,7 +17,7 @@ services:
     image: graphql-example.frontend
     build:
       context: ./
-      dockerfile: Dockerfile.frontend
+      dockerfile: ./dockerfiles/frontend/Dockerfile
     volumes:
       - ./:/app
   database:
@@ -25,10 +25,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: insecurepassword
       MYSQL_DATABASE: graphql_development
+    volumes:
+      - mysql_data:/var/lib/mysql
   web:
     image: nginx
     ports:
-      - "8888:80"
+      - "80:80"
     links:
       - backend
       - frontend
@@ -40,6 +42,10 @@ services:
   graphiql:
     image: npalm/graphiql
     environment:
-      API_URL: http://localhost:8888/api/graph
+      API_URL: http://localhost/api/graph
     ports:
       - "4000:4000"
+
+volumes:
+  mysql_data:
+    driver: local

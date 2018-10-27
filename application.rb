@@ -10,6 +10,9 @@ DB = Database.establish_connection
 
 require './app/models/user'
 require './app/models/festival'
+require './app/models/artist'
+require './app/models/genre'
+require './app/models/bio'
 
 require './graph/types/base_type'
 require './graph/types/festival_type'
@@ -29,11 +32,13 @@ class GraphQLExample < Sinatra::Base
   use Rack::PostBodyContentTypeParser
   use Rack::Cors do
     allow do
-      origins %w(localhost:4000 localhost:8080 localhost:8888)
+      origins %w(localhost:4000) # graphiql
       resource '*', :headers => :any,
         :methods => [:post, :options], credentials: true
     end
   end
+
+  set :static, :enable
 
   post "/graph" do
     result = Graph::GraphQLExampleSchema.execute(params[:query], {
