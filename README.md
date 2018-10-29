@@ -6,7 +6,7 @@ Simple GraphQL/React app for (_self_) training purposes.
 Running
 ----
 
-```make``` (port 8888)
+```make``` (port 80)
 
 Testing (TBD)
 ----

@@ -23,7 +23,6 @@ class GraphQLExample extends React.Component {
     return (
       <Router>
         <ApolloProvider client={ this.client }>
-          <h1>Festival App</h1>
           <Users />
         </ApolloProvider>
       </Router>
