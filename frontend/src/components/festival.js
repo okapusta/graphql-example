@@ -18,7 +18,7 @@ const addFestivalMutation = gql`
   }
 `;
 
-export class NewFestival extends React.Component {
+class NewFestival extends React.Component {
   constructor(props) {
     super(props);
     this.formRef = React.createRef();
@@ -32,7 +32,7 @@ export class NewFestival extends React.Component {
         if (data.errors.length) {
           this.formRef.current.displayValidationErrors(data.errors);
         } else {
-          console.log('resp', resp);
+          console.log('resp', response);
         }
     });
   }
@@ -47,4 +47,8 @@ export class NewFestival extends React.Component {
   }
 }
 
-export default graphql(addFestivalMutation)(NewFestival);
+const NewFestivalGraph = graphql(addFestivalMutation)(NewFestival);
+
+export {
+   NewFestivalGraph as NewFestival,
+};

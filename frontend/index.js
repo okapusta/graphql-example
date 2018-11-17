@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 import { Users } from './src/components/users';
-import NewFestival from './src/components/festival';
+import { NewFestival } from './src/components/festival';
 
 class GraphQLExample extends React.Component {
   constructor() {
