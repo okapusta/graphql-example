@@ -5,10 +5,13 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router,
+  Route,
+  Switch,
 } from 'react-router-dom';
 
 import { Users } from './src/components/users';
+import NewFestival from './src/components/festival';
 
 class GraphQLExample extends React.Component {
   constructor() {
@@ -23,7 +26,12 @@ class GraphQLExample extends React.Component {
     return (
       <Router>
         <ApolloProvider client={ this.client }>
-          <Users />
+          <Switch>
+            <div className="container">
+              <Route exact path="/" component={ Users } />
+              <Route path="/festivals/new" component={ NewFestival } />
+            </div>
+          </Switch>
         </ApolloProvider>
       </Router>
     );

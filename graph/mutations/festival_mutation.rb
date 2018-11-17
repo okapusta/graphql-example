@@ -11,7 +11,7 @@ module Graph
       def resolve(name:, place:, user_id: nil)
         festival = Festival.new(name: name, place: place)
         if festival.save
-          if user = User.find(user_id).last
+          if user = User.find(user_id)
             add_festival(user, festival)
           end
           {

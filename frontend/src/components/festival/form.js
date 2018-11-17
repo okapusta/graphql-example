@@ -33,22 +33,43 @@ export class FestivalForm extends React.Component {
     })
   }
 
+  displayValidationErrors(errors) {
+    this.setState({ errors });
+    console.log(this.state);
+  }
+
+  clearValidationErrors() {
+    this.setState({
+      errors: undefined,
+    })
+  }
+
+
   render() {
     const name = this.state.name;
     const place = this.state.place;
 
     return (
-      <form onSubmit={ this.handleSubmit }>
-        <label htmlFor="name">
-          Name
-          <input id="name" value={ name } onChange={ (e) => this.handleChange('name', e) } />
-        </label>
-        <label htmlFor="place">
-          Place
-          <input id="place" value={ place } onChange={ (e) => this.handleChange('place', e) } />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <React.Fragment>
+        { this.state.errors &&
+          <ul>
+            { this.state.errors.map(e => {
+              return ( <li>{ e }</li> );
+            })}
+          </ul>
+        }
+        <form onSubmit={ this.handleSubmit }>
+          <label htmlFor="name">
+            Name
+            <input id="name" value={ name } onChange={ (e) => this.handleChange('name', e) } />
+          </label>
+          <label htmlFor="place">
+            Place
+            <input id="place" value={ place } onChange={ (e) => this.handleChange('place', e) } />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </React.Fragment>
     );
   }
 }
