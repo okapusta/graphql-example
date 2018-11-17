@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 import { Users } from './src/components/users';
-import { NewFestival } from './src/components/festival';
+import { NewFestival, Festival } from './src/components/festival';
 
 class GraphQLExample extends React.Component {
   constructor() {
@@ -29,6 +29,7 @@ class GraphQLExample extends React.Component {
           <Switch>
             <div className="container">
               <Route exact path="/" component={ Users } />
+              <Route exact path="/festival/:id" component={ Festival } />
               <Route path="/festivals/new" component={ NewFestival } />
             </div>
           </Switch>
