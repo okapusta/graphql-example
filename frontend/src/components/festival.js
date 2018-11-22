@@ -79,7 +79,10 @@ class Festival extends React.Component {
                 <div className="col-md col-sm">
                   <h2>{ festival.name } ({ festival.place })</h2>
                   <hr />
-                  Artists:
+                  { festival.artists.length > 0 && <React.Fragment>
+                      Artists:
+                    </React.Fragment>
+                  }
                 </div>
                 <div className="col-md col-sm">
                   <h2>Add artist</h2>
