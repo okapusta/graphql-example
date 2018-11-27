@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 import { Users } from './src/components/users';
+import { Festivals } from './src/components/festivals';
 import { NewFestival, Festival } from './src/components/festival';
 
 class GraphQLExample extends React.Component {
@@ -28,7 +29,7 @@ class GraphQLExample extends React.Component {
         <ApolloProvider client={ this.client }>
           <Switch>
             <div className="container">
-              <Route exact path="/" component={ Users } />
+              <Route exact path="/" component={ Festivals } />
               <Route exact path="/festival/:id" component={ Festival } />
               <Route path="/festivals/new" component={ NewFestival } />
             </div>

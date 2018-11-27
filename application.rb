@@ -25,6 +25,8 @@ require './graph/resolvers/festivals_resolver'
 require './graph/mutations/base_mutation'
 require './graph/mutations/festival_mutation'
 
+require './graph/interfaces/name_id_interface'
+
 require './graph/types/query_type'
 require './graph/types/mutation_type'
 require './graph/schema'
