@@ -30,7 +30,7 @@ class GraphQLExample extends React.Component {
           <Switch>
             <div className="container">
               <Route exact path="/" component={ Festivals } />
-              <Route exact path="/festival/:id" component={ Festival } />
+              <Route path="/festival/:id" component={ Festival } />
               <Route path="/festivals/new" component={ NewFestival } />
             </div>
           </Switch>

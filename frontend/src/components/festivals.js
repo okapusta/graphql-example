@@ -8,6 +8,8 @@ import { Loading } from './loading';
 
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
+import { Festival } from './festival';
+
 const GET_FESTIVALS = gql`
 {
   festivals {
@@ -35,7 +37,7 @@ export class Festivals extends React.Component {
                 <ol>
                   {
                     data.festivals.edges.map((fest, idx) => (
-                      <li key={ idx }>
+                      <li key={ fest.index }>
                         <Link to={ `/festival/${fest.node.id}` }>{ fest.node.name }</Link>
                       </li>
                     ))
