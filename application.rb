@@ -13,6 +13,8 @@ require './app/models/artist'
 require './app/models/genre'
 require './app/models/bio'
 
+require './graph/interfaces/name_id_interface'
+
 require './graph/types/base_type'
 require './graph/types/artist_type'
 require './graph/types/festival_type'
@@ -24,8 +26,6 @@ require './graph/resolvers/festivals_resolver'
 
 require './graph/mutations/base_mutation'
 require './graph/mutations/festival_mutation'
-
-require './graph/interfaces/name_id_interface'
 
 require './graph/types/query_type'
 require './graph/types/mutation_type'
