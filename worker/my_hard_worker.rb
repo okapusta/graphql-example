@@ -1,6 +1,8 @@
 require_relative '../lib/redis_connector'
 require 'securerandom'
 
+require 'appoptics_apm'
+
 class MyHardWorker
   class SomeDumbException < StandardError; end;
 
@@ -9,13 +11,15 @@ class MyHardWorker
 
   def run
     loop do
-      key = rand(10_000)
-      if !(key % 10 == 0)
-        do_redis_stuff
-      else
-        fuck_up!
+      AppOpticsAPM::SDK.trace('worker-layer', {}) do
+        key = rand(10_000)
+        if !(key % 10 == 0)
+          do_redis_stuff
+        else
+          fuck_up!
+        end
+        wait
       end
-      wait
     end
   end
 

@@ -9,6 +9,7 @@ services:
       - ./:/app
     environment:
       MYSQL_DATABASE: mysql2://root:insecurepassword@database/graphql_development
+      APPOPTICS_SERVICE_KEY: e16ed4d503ff8eb9fc6865837b72449d7eb5c6293ee2eb989b8f8e8113f9a8ad:kiszka
     links:
       - database
     depends_on:
@@ -50,10 +51,12 @@ services:
   worker:
     image: graphql-example.backend
     restart: on-failure
-    
+
     command: bundle exec ruby bin/hard_worker_daemon.rb run
     volumes:
       - ./:/app
+    environment:
+      APPOPTICS_SERVICE_KEY: e16ed4d503ff8eb9fc6865837b72449d7eb5c6293ee2eb989b8f8e8113f9a8ad:kiszka
 
 volumes:
   mysql_data:
