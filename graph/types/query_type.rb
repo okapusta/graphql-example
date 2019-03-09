@@ -13,6 +13,11 @@ module Graph
             handle: 'stefan'
           })]
         }
+
+      field :festivals, Types::FestivalType.connection_type
+      def festivals
+        Festival.all
+      end
     end
   end
 end

@@ -44,7 +44,6 @@ export class Users extends React.Component {
               )
             }}
           </Query>
-          <Route path="/users/:id" component={ User } />
         </div>
       </Router>
     );

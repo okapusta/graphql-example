@@ -1,8 +1,8 @@
 module Graph
   module Types
     class FestivalType < BaseType
-      field :id, Integer
-      field :name, String
+      implements Graph::Interfaces::NameIdInterface
+
       field :place, String
 
       field :artists, [Types::ArtistType]
