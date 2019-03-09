@@ -45,6 +45,15 @@ services:
       API_URL: http://localhost/api/graph
     ports:
       - "4000:4000"
+  redis:
+    image: redis
+  worker:
+    image: graphql-example.backend
+    restart: on-failure
+    
+    command: bundle exec ruby bin/hard_worker_daemon.rb run
+    volumes:
+      - ./:/app
 
 volumes:
   mysql_data:
