@@ -5,12 +5,13 @@ class MyHardWorker
   class SomeDumbException < StandardError; end;
 
   SLEEP_INTERVAL = 0.1
+  REDIS_KEY = %(worker-reports)
 
   def run
     loop do
       key = rand(10_000)
       if !(key % 10 == 0)
-        do_redis_stuff(key)
+        do_redis_stuff
       else
         fuck_up!
       end
@@ -20,10 +21,8 @@ class MyHardWorker
 
   private
 
-  def do_redis_stuff(key)
-    RedisConnector.instance.fetch(key) do
-      SecureRandom.hex
-    end
+  def do_redis_stuff
+    RedisConnector.instance.lpush(REDIS_KEY, SecureRandom.hex)
   end
 
   def wait

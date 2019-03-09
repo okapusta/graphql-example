@@ -12,6 +12,14 @@ class RedisConnector
     connection.set(key, value)
   end
 
+  def lpush(key, value)
+    connection.lpush(key, value)
+  end
+
+  def lrange(key, start, stop)
+    connection.lrange(key, start, stop)
+  end
+
   def fetch(key, &block)
     return unless block_given?
 
