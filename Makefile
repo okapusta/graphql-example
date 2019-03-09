@@ -1,5 +1,7 @@
 all: run
 
+build: backend frontend
+
 backend:
 	docker build -f ./dockerfiles/backend/Dockerfile -t graphql-example.backend .
 
