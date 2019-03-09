@@ -5,3 +5,4 @@ yarn-error.log
 .~lock.*
 .DS_*
 
+*pid

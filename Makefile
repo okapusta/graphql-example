@@ -1,9 +1,9 @@
 all: run
 
-build-backend:
+backend:
 	docker build -f ./dockerfiles/backend/Dockerfile -t graphql-example.backend .
 
-build-frontend:
+frontend:
 	docker build -f ./dockerfiles/frontend/Dockerfile -t graphql-example.frontend .
 
 run:

@@ -8,23 +8,21 @@ class MyHardWorker
 
   def run
     loop do
-      do_redis_stuff
-
+      key = rand(10_000)
+      if !(key % 10 == 0)
+        do_redis_stuff(key)
+      else
+        fuck_up!
+      end
       wait
     end
   end
 
   private
 
-  def do_redis_stuff
-    puts "majonez"
-    key = rand(10_000)
-    if !(key % 10 == 0)
-      RedisConnector.instance.fetch(key) do
-        SecureRandom.hex
-      end
-    else
-      fuck_up!
+  def do_redis_stuff(key)
+    RedisConnector.instance.fetch(key) do
+      SecureRandom.hex
     end
   end
 

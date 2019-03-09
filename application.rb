@@ -52,4 +52,8 @@ class GraphQLExample < Sinatra::Base
 
     halt(200, {}, result.to_json)
   end
+
+  get "/heartbeat" do
+    halt(200, {}, "OK")
+  end
 end
