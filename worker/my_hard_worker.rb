@@ -12,13 +12,17 @@ class MyHardWorker
   def run
     loop do
       AppOpticsAPM::SDK.trace('worker-layer', {}) do
-        key = rand(10_000)
-        if !(key % 10 == 0)
-          do_redis_stuff
-        else
-          fuck_up!
+        begin
+          key = rand(10_000)
+          if !(key % 10 == 0)
+            do_redis_stuff
+          else
+            fuck_up!
+          end
+          wait
+        rescue => e
+          AppOpticsAPM::API.log_exception('worker-layer', e, {})
         end
-        wait
       end
     end
   end
