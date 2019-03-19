@@ -10,6 +10,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import { Admin } from './src/components/admin';
 import { Users } from './src/components/users';
 import { Festivals } from './src/components/festivals';
 import { NewFestival, Festival } from './src/components/festival';
@@ -32,6 +33,7 @@ class GraphQLExample extends React.Component {
               <Route exact path="/" component={ Festivals } />
               <Route path="/festival/:id" component={ Festival } />
               <Route path="/festivals/new" component={ NewFestival } />
+              <Route path="/admin" component={ Admin } />
             </div>
           </Switch>
         </ApolloProvider>
