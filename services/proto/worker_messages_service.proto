@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+service WorkerMessages {
+  rpc RecentReports (WorkerReportsRequest) returns (WorkerReports) {}
+}
+
+message WorkerReportsRequest {
+  int32 count = 1;
+}
+
+message WorkerReports {
+  repeated WorkerReport reports = 1;
+}
+
+message WorkerReport {
+  string message = 1;
+}
