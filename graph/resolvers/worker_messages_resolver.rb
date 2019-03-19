@@ -3,6 +3,8 @@ require './services/proto/worker_messages_service_services_pb'
 module Graph
   module Resolvers
     class WorkerMessagesResolver < BaseResolver
+      RECENT_MESSAGES_COUNT = 10
+
       type [Types::WorkerMessageType]
 
       def resolve
@@ -16,7 +18,7 @@ module Graph
       end
 
       def request
-        WorkerReportsRequest.new(count: 10)
+        WorkerReportsRequest.new(count: RECENT_MESSAGES_COUNT)
       end
     end
   end
