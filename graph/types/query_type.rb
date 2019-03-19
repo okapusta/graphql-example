@@ -18,6 +18,9 @@ module Graph
       def festivals
         Festival.all
       end
+
+      field :workerMessages, [Types::WorkerMessageType],
+        resolver: Resolvers::WorkerMessagesResolver
     end
   end
 end

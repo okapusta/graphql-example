@@ -19,10 +19,13 @@ require './graph/types/base_type'
 require './graph/types/artist_type'
 require './graph/types/festival_type'
 require './graph/types/user_type'
+require './graph/types/worker_message_type'
+
 require './graph/resolvers/base_resolver'
 require './graph/resolvers/users_resolver'
 require './graph/resolvers/user_resolver'
 require './graph/resolvers/festivals_resolver'
+require './graph/resolvers/worker_messages_resolver'
 
 require './graph/mutations/base_mutation'
 require './graph/mutations/festival_mutation'
